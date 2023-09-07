@@ -1,9 +1,16 @@
-const express = require("express");
-const AppController = require("../controllers/AppController");
+#!/usr/bin/node
 
-const router = express.Router();
+import { Router } from 'express';
+import AppController from '../controllers/AppController';
+import UsersController from '../controllers/UsersController';
 
-router.get("/status", AppController.getStatus);
-router.get("/stats", AppController.getStats);
+const router = Router();
 
-module.exports = router;
+// Task 2 - First API
+router.get('/status', AppController.getStatus);
+router.get('/stats', AppController.getStats);
+
+// Task 3 - Create a new user
+router.post('/users', UsersController.postNew);
+
+export default router;
