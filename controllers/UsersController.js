@@ -1,28 +1,31 @@
 #!/usr/bin/node
 
-import dbClient from '../utils/db';
+const dbClient = require('../utils/db');
 
 class UsersController {
   static async postNew(req, res) {
     const { email, password } = req.body;
-
     if (!email) {
-      return res.status(400).json({ error: 'Missing email' });
+      res.status(400).json({ error: 'Missing email' });
+      res.end();
+      return;
     }
-
     if (!password) {
-      return res.status(400).json({ error: 'Missing password' });
+      res.status(400).json({ error: 'Missing password' });
+      res.end();
+      return;
     }
-
     const userExist = await dbClient.userExist(email);
     if (userExist) {
-      return res.status(400).json({ error: 'Already exist' });
+      res.status(400).json({ error: 'Already exist' });
+      res.end();
+      return;
     }
-
-    const newUser = await dbClient.createUser(email, password);
-
-    return res.status(201).json({ id: newUser.insertedId, email });
+    const user = await dbClient.createUser(email, password);
+    const id = `${user.insertedId}`;
+    res.status(201).json({ id, email });
+    res.end();
   }
 }
 
-export default UsersController;
+module.exports = UsersController;
