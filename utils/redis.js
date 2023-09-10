@@ -33,7 +33,6 @@ class RedisClient {
     await delAsync(key);
   }
 
-  // Add more Redis-related methods as needed
 }
 
 const redisClient = new RedisClient();
