@@ -2,6 +2,7 @@ const { MongoClient } = require('mongodb');
 
 class DBClient {
   constructor() {
+    // Set default values for connection parameters if environment variables are not defined
     const host = process.env.DB_HOST || 'localhost';
     const port = process.env.DB_PORT || 27017;
     this.database = process.env.DB_DATABASE || 'files_manager';
