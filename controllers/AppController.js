@@ -1,11 +1,11 @@
 #!/usr/bin/node
 
 const redisClient = require('../utils/redis');
-const dbClient = require("../utils/db");
+const dbClient = require('../utils/db');
 
 class AppController {
   static async getStatus(req, res) {
-    const redisStatus = await dbClient.isAlive();
+    const redisStatus = await redisClient.isAlive();
     const dbStatus = await dbClient.isAlive();
 
     const response = {
