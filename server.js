@@ -3,13 +3,13 @@
 const express = require("express");
 const router = require("./routes/index");
 
-const server = express();
+const app = express();
 const PORT = process.env.PORT || 5000;
 
-server.use(express.json());
-server.use(router);
+app.use(express.json());
+app.use(router);
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
 });
 
