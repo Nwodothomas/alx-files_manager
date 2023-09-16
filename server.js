@@ -1,11 +1,5 @@
 #!/usr/bin/node
 
-/*
- *  setup server connection
- */
-
-#!/usr/bin/node
-
 const express = require("express");
 const router = require("./routes/index");
 
