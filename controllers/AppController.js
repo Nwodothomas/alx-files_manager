@@ -1,9 +1,5 @@
 #!/usr/bin/node
 
-/*
- *  setup server connection
- */
-
 const redisClient = require('../utils/redis');
 const dbClient = require("../utils/db");
 
