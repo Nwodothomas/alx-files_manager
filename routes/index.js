@@ -1,11 +1,6 @@
 #!/usr/bin/node
 
-/*
- *  setup server connection
- */
-
 const express = require('express');
-const router = express.Router();
 const AppController = require('../controllers/AppController');
 
 router.get('/status', AppController.getStatus);
